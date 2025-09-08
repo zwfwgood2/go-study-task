@@ -6,13 +6,15 @@ import (
 )
 
 func RunIsPalindrame(num int32) {
-	palindrome, err := IsPalindrome(num)
+	palindrome, err := isPalindrome(num)
 	if err != nil {
 		return
 	}
 	fmt.Printf("数字num:%v是否为回数%v\n", num, palindrome)
 }
-func IsPalindrome(num int32) (bool, error) {
+
+// 判断一个数字是否为回文
+func isPalindrome(num int32) (bool, error) {
 	//TODO 检验数值合法性
 	if num < 0 {
 		return false, nil

@@ -6,7 +6,7 @@ import (
 )
 
 func RunSingleNumber(nums []int) {
-	fmt.Printf("此切片%v中只出现一次的数字是：%v\n", nums, SingleNumber(nums))
+	fmt.Printf("此切片%v中只出现一次的数字是：%v\n", nums, singleNumber(nums))
 }
 
 func BuildNums() []int {
@@ -25,7 +25,7 @@ func BuildNums() []int {
 /**
  * 136. 只出现一次的数字
  */
-func SingleNumber(nums []int) int {
+func singleNumber(nums []int) int {
 	defer func() {
 		if r := recover(); r != nil {
 			fmt.Printf("捕获到panic类型是：%v,字面值是：%v\n", r.(error), r)
