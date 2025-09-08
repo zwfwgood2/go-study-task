@@ -5,6 +5,23 @@ import (
 	"fmt"
 )
 
+func RunSingleNumber(nums []int) {
+	fmt.Printf("此切片%v中只出现一次的数字是：%v\n", nums, SingleNumber(nums))
+}
+
+func BuildNums() []int {
+	//输入切片
+	nums := make([]int, 21)
+	//nums := []int{}
+	for i := 0; i < 21; i++ {
+		nums[i] = i
+		if i > 9 {
+			nums[i] = i - 10
+		}
+	}
+	return nums
+}
+
 /**
  * 136. 只出现一次的数字
  */
