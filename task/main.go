@@ -8,4 +8,5 @@ func main() {
 	basetype.RunIsValid("{()}")
 	basetype.RunLongestCommonPrefix([]string{"bahao", "ni", "nihaoa"})
 	basetype.RunPlusOne([]int64{1, 9, 9})
+	basetype.RunRemoveDuplicates([]int{1, 1, 3, 5, 5, 6, 7})
 }
