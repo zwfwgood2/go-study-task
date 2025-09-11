@@ -5,5 +5,7 @@ func Run() {
 	//RunSlicedMultiplyTwo([]int{1, 2})
 	//RunPrintNum()
 	//RunTaskExcutor()
-	call()
+	//call()
+	//RunchanOut()
+	RunMutexTest()
 }
