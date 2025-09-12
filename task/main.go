@@ -1,10 +1,9 @@
 package main
 
-import (
-	"github.com/zwfwgood2/go-study-task/task/sync"
-)
+import "github.com/zwfwgood2/go-study-task/task/gorm"
 
 func main() {
 	//basetype.Run()
-	sync.Run()
+	//sync.Run()
+	gorm.OpStudents()
 }
