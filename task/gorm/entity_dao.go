@@ -15,7 +15,8 @@ func init() {
 	if err != nil {
 		panic(err)
 	} else {
-		db.AutoMigrate(&Students{}, &Accounts{}, &Transactions{}, &Books{}, &Employees{})
+		//db.AutoMigrate(&Students{}, &Accounts{}, &Transactions{}, &Books{}, &Employees{})
+		db.AutoMigrate(&User{}, &Post{}, &Comment{})
 	}
 }
 func addStudent(student *Students) bool {
@@ -87,4 +88,19 @@ func insterBooks(books []Books, tx *gorm.DB) ([]Books, error) {
 func insterEmployees(employees []Employees, tx *gorm.DB) ([]Employees, error) {
 	tx.Debug().Create(&employees)
 	return employees, db.Error
+}
+
+func saveUsers(user User) User {
+	db.Debug().Create(&user)
+	return user
+}
+func selectUserByCode(code uint) (user User, error error) {
+	user.Code = code
+	db.Debug().Preload("Posts").Preload("Posts.Comments").Preload("Posts.Comments.User").Where("code=?", code).Find(&user)
+	error = db.Error
+	return
+}
+func selectPostsByMaxComments() (Post1 []Post) {
+	db.Debug().Model(Post{}).Select("Title", "Comments")
+	return
 }

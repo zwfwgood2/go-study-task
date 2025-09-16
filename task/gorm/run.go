@@ -14,7 +14,8 @@ func Run() {
 
 	//insterBooks([]Books{{Title: "book1", Author: "zw", Price: 50}, {Title: "book1", Author: "zw", Price: 50}}, db)
 	//insterEmployees([]Employees{{Name: "zw", Department: "技术部", Salary: 500001}, {Name: "zw1", Department: "技术部", Salary: 40001}, {Name: "zw2", Department: "技术部1", Salary: 2}}, db)
-	queryBookAndEmployees()
+	//queryBookAndEmployees()
+	queryUsersByCode()
 }
 
 // students 增删改查
@@ -77,5 +78,17 @@ func queryBookAndEmployees() {
 
 	mrp, count := queryEmployeesByPage(map[string]interface{}{"department": "技术部"}, map[string]interface{}{"page": 0, "pageSize": 10})
 	fmt.Printf("employees query result=%v,总条数=%v,len=%v,cap=%v\n", mrp, count, len(mrp), cap(mrp))
+}
+func queryUsersByCode() {
 
+	//saveUsers(User{Code: 1, Name: "lisi", Age: 10,
+	//	Posts: []Post{{Title: "post1", Content: "content1",
+	//		Comments: []Comment{{Content: "comment1"}, {Content: "comment2"}}}, {Title: "post2", Content: "content2",
+	//		Comments: []Comment{{Content: "comment3"}, {Content: "comment4"}}}}})
+
+	result, _ := selectUserByCode(1)
+	fmt.Printf("users query result=%v\n", result)
+
+	post1 := selectPostsByMaxComments()
+	fmt.Printf("posts query result=%v\n", post1)
 }
