@@ -2,6 +2,8 @@ package gorm
 
 import (
 	"fmt"
+	"sort"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -90,17 +92,23 @@ func insterEmployees(employees []Employees, tx *gorm.DB) ([]Employees, error) {
 	return employees, db.Error
 }
 
-func saveUsers(user User) User {
-	db.Debug().Create(&user)
-	return user
+func saveUsers(user User) (User, error) {
+	tx := db.Debug().Create(&user)
+	return user, tx.Error
 }
 func selectUserByCode(code uint) (user User, error error) {
-	user.Code = code
-	db.Debug().Preload("Posts").Preload("Posts.Comments").Preload("Posts.Comments.User").Where("code=?", code).Find(&user)
+	//user.Code = code
+	//db.Debug().Preload("Posts").Preload("Posts.Comments").Where("code=?", code).Find(&user)
+	db.Debug().Joins("Posts").Joins("Posts.Comments").Find(&user)
 	error = db.Error
 	return
 }
 func selectPostsByMaxComments() (Post1 []Post) {
-	db.Debug().Model(Post{}).Select("Title", "Comments")
+	//db.Debug().Model(Post{}).Select("Title").Find(&Post1)
+	//db.Debug().Model(User{ID: 1, Code: 1}).Select("title").Association("Posts").Find(&Post1)
+	db.Debug().Preload("Comments").Find(&Post1)
+	sort.Slice(Post1, func(i, j int) bool {
+		return len(Post1[i].Comments) > len(Post1[j].Comments)
+	})
 	return
 }

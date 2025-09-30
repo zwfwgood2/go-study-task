@@ -1,8 +1,9 @@
 package gorm
 
 import (
-	"gorm.io/gorm"
 	"time"
+
+	"gorm.io/gorm"
 )
 
 type Students struct {
@@ -78,6 +79,5 @@ type Comment struct {
 	Content     string
 	PostID      uint
 	UserID      uint
-	User        User
 	Post        Post
 }

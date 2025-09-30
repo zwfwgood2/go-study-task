@@ -29,10 +29,10 @@ func RunTaskExcutor() {
 		fmt.Printf("任务编号=%v;执行时间=%v秒\n", i, seconds)
 		return
 	})
-	taskExcutor(tasks)
+	taskExecutor(tasks)
 	time.Sleep(20 * time.Millisecond)
 }
-func taskExcutor(tasks []func(i int) (b int)) {
+func taskExecutor(tasks []func(i int) (b int)) {
 	for i, task := range tasks {
 		go task(i)
 	}

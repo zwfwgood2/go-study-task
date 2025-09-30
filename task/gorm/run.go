@@ -3,6 +3,7 @@ package gorm
 import (
 	"errors"
 	"fmt"
+
 	"gorm.io/gorm"
 )
 
@@ -81,13 +82,16 @@ func queryBookAndEmployees() {
 }
 func queryUsersByCode() {
 
-	//saveUsers(User{Code: 1, Name: "lisi", Age: 10,
+	//users, e := saveUsers(User{Code: 1, Name: "lisi", Age: 10,
 	//	Posts: []Post{{Title: "post1", Content: "content1",
 	//		Comments: []Comment{{Content: "comment1"}, {Content: "comment2"}}}, {Title: "post2", Content: "content2",
 	//		Comments: []Comment{{Content: "comment3"}, {Content: "comment4"}}}}})
+	//fmt.Printf("add user and join other table result=%v\n", users, e)
 
-	result, _ := selectUserByCode(1)
-	fmt.Printf("users query result=%v\n", result)
+	//result, _ := selectUserByCode(1)
+	//fmt.Printf("users query result=%v\n", result)
+	//fmt.Printf("users's posts query result=%v\n", result.Posts)
+	//fmt.Printf("user's posts's commnet's query result=%v\n", result.Posts[0].Comments)
 
 	post1 := selectPostsByMaxComments()
 	fmt.Printf("posts query result=%v\n", post1)
