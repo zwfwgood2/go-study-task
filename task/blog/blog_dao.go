@@ -10,11 +10,11 @@ type BUser struct {
 	ID          uint      `gorm:"primarykey"`
 	CreatedTime time.Time `gorm:"autoCreateTime"`
 	UpdatedTime time.Time `gorm:"autoUpdateTime"`
-	DeleteFlag  gorm.DeletedAt
-	Name        string
-	Age         int
-	Code        uint    `gorm:"uniqueIndex"`
-	Posts       []BPost `gorm:"foreignKey:Code1;references:Code"`
+	//DeleteFlag  gorm.DeletedAt
+	Name  string
+	Age   int
+	Code  uint    `gorm:"uniqueIndex"`
+	Posts []BPost `gorm:"foreignKey:Code1;references:Code"`
 }
 
 type BPost struct {
